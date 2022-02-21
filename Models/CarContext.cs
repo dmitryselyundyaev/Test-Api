@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CmdApi.Models
 {
-    public class CommandContext: DbContext
+    public class CarContext: DbContext
     {
 
-        public CommandContext(DbContextOptions<CommandContext> options) : base(options)
+        public CarContext(DbContextOptions<CarContext> options) : base(options)
         {
 
         }
-        public DbSet<Command> CommandItems { get; set; }
+        public DbSet<Car> Cars { get; set; }
     }
 }

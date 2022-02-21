@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace CmdApi.Models
 {
-    public class Command
+    public class Car
     {
         public int Id { get; set; }
-        public string HowTo { get; set; }
-        public string Platform { get; set; }
-        public string Commandline { get; set; }
-
+        public string Model { get; set; }
+        public string PlateNumber { get; set; }
     }
 }
