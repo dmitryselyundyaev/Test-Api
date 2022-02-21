@@ -1,10 +1,6 @@
 ﻿using CmdApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CmdApi.Controllers
 {
@@ -15,12 +11,14 @@ namespace CmdApi.Controllers
         public readonly CarContext _context;
         public CarsController(CarContext context) => _context = context;
 
+        ///GET:   All cars in db.
         [HttpGet]
-        public ActionResult<IEnumerable<Car>> GetData()
+        public ActionResult<IEnumerable<Car>> GetAllData()
         {
             return _context.Cars;
         }
 
+        ///GET: Car by id from db.
         [HttpGet("{id}")]
         public ActionResult<Car> GetDataById(int id)
         {
@@ -32,8 +30,8 @@ namespace CmdApi.Controllers
             return car;
         }
 
+        ///POST:   Post new car to db.
         [HttpPost]
-        //[ActionName(nameof(SetData))]
         public ActionResult<Car> SetData(Car car)
         {
             _context.Cars.Add(car);
@@ -41,9 +39,10 @@ namespace CmdApi.Controllers
             return car;
         }
 
+
+        ///PUT:      Update car info by using id.
         [HttpPut("{id}")]
-        //[ActionName(nameof(SetData))]
-        public ActionResult<Car> UpdateData(Car car,int id)
+        public ActionResult<Car> UpdateData(Car car, int id)
         {
             var Car = _context.Cars.Find(id);
             Car.Model = car.Model;
@@ -55,7 +54,7 @@ namespace CmdApi.Controllers
 
 
 
-
+        ///DELETE:       Delete car using id.
         [HttpDelete("{id}")]
         public ActionResult<Car> DeleteCarById(int id)
         {
